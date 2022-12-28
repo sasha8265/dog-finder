@@ -1,25 +1,21 @@
-import React, {useState} from "react"
-import { Link, useParams, Route } from "react-router-dom";
+import React from "react"
+import { Link, Navigate } from "react-router-dom";
 
-const DogDetails = ({dogs}) => {
-    const [src, setSrc] = useState(null);
-    const { name } = useParams;
+const DogDetails = ({dog}) => {
+    // const [src, setSrc] = useState(null);
 
-    //filter dog results based on name
-    const filterDogs = (dogs) => {
-        if (name) {
-            const currDog = dogs.find(dog => dog.name.toLowerCase() === name.toLowerCase());
-            return currDog;
-        }
-        return null;
-    }
-
-    let img = src ? <img src={src} alt="" /> : null;
-    let dog = filterDogs({ dogs })
-    if (!dog) return <Route exact path="/dogs"/>
+    if (!dog) return <Navigate to="/dogs" replace />
     return (
         <div>
-            <h1>Dog name</h1>
+            <Link to="/dogs">Back</Link>
+            <h1>{dog.name}</h1>
+            <h4>Age: {dog.age} years old</h4>
+            <img src={dog.src} alt={dog.name} />
+            <ul>
+                {dog.facts.map((fact, idx) => (
+                    <li key={idx}>{fact}</li>
+                ))}
+            </ul>
 
         </div>
     )
