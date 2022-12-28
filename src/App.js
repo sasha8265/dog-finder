@@ -1,7 +1,7 @@
 import './App.css';
 import { BrowserRouter } from "react-router-dom";
-import Routes from "./Routes";
-import NavBar from "./NavBar";
+import DogRoutes from "./Routes";
+import NavBar from "./Nav";
 
 //import dog images
 import whiskey from "./images/whiskey.jpg";
@@ -9,12 +9,15 @@ import tubby from "./images/tubby.jpg";
 import duke from "./images/duke.jpg";
 import perry from "./images/perry.jpg";
 
-function App() {
-  return (
-    <div className="App">
-      
-    </div>
-  );
+function App({dogs}) {
+    return (
+        <div className="App">
+            <BrowserRouter>
+                <NavBar dogs={dogs} />
+                <DogRoutes dogs={dogs} />
+            </BrowserRouter>
+        </div>
+    );
 }
 
 const dogs = [
@@ -59,7 +62,7 @@ const dogs = [
         ]
     }
 ]
-    
+
 App.defaultProps = { dogs };
 
 export default App;
