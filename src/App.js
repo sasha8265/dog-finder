@@ -64,5 +64,4 @@ const dogs = [
 ]
 
 App.defaultProps = { dogs };
-
 export default App;

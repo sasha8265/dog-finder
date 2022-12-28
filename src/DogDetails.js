@@ -2,7 +2,6 @@ import React from "react"
 import { Link, Navigate } from "react-router-dom";
 
 const DogDetails = ({dog}) => {
-    // const [src, setSrc] = useState(null);
 
     if (!dog) return <Navigate to="/dogs" replace />
     return (
